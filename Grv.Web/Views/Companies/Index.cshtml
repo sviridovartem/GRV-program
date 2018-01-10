@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Grv.BO.Company>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout.cshtml";
+}
+
+<div class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            @Html.ActionLink("Time saver", "Index", "Home", new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                @if (User.IsInRole("Admin"))
+                {
+                    <li>
+                        @Html.ActionLink("Accounts", "Index", "Users")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Company", "Index", "Company")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Projects", "Index", "Projects")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Tasks", "Index", "Tasks")
+                    </li>
+                }
+                @if (User.IsInRole("User"))
+                {
+                    <li>
+                        @Html.ActionLink("Tasks", "Index", "Tasks")
+                    </li>
+                }
+                @if (User.IsInRole("Superadmin"))
+                {
+                    <li>
+                        @Html.ActionLink("Companies", "Index", "Companies")
+                    </li>
+                }
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>
+                        @Html.ActionLink("Profile", "Index", "Account")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Logout", "Logout", "Account")
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div>
+    <p>
+        <a class="btn btn-default" href="@Url.Action("Add", "Companies")">Add new company</a>
+    </p>
+    <table class="table table-bordered table-responsive">
+        <tr>
+            <th>Company</th>
+            <th>Default TimeZone</th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimezoneId)
+                </td>
+                <td>
+                    <a class="btn btn-default" href="@Url.Action("Update", "Companies", new {id=item.Id})">Edit</a>
+                    <a class="btn btn-default" href="@Url.Action("Admins", "Companies", new {id=item.Id})">Admins</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+

@@ -1,0 +1,87 @@
+﻿@model Grv.Web.Models.TaskModels.TasksViewModel
+@{
+    ViewBag.Title = "Tasks";
+    Layout = "~/Views/Layout.cshtml";
+}
+<link rel="stylesheet" href="@Url.Content("~/Resources/css/tasks.css")" />
+<script type="text/javascript" src="@Url.Content("~/Resources/js/tasks.js")"></script>
+
+<div class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            @Html.ActionLink("Time saver", "Index", "Home", new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                @if (User.IsInRole("Admin"))
+                {
+                <li>
+                    @Html.ActionLink("Accounts", "Index", "Users")
+                </li>
+                <li>
+                    @Html.ActionLink("Company", "Index", "Company")
+                </li>
+                <li>
+                    @Html.ActionLink("Projects", "Index", "Projects")
+                </li>
+                <li>
+                    @Html.ActionLink("Tasks", "Index", "Tasks")
+                </li>
+                }
+                @if (User.IsInRole("User"))
+                {
+                <li>
+                    @Html.ActionLink("Tasks", "Index", "Tasks")
+                </li>
+                }
+                @if (User.IsInRole("Superadmin"))
+                {
+                <li>
+                    @Html.ActionLink("Companies", "Index", "Companies")
+                </li>
+                }
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                @if (User.Identity.IsAuthenticated)
+                {
+                <li>
+                    @Html.ActionLink("Profile", "Index", "Account")
+                </li>
+                <li>
+                    @Html.ActionLink("Logout", "Logout", "Account")
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div>
+    <p>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav nav-tabs week"></ul>
+            <ul class="nav navbar-nav">
+                <li style=" padding-left:30px; padding-right:30px;">
+                    <div class="row btn-group">
+                        <div class="input-group date calendar" data-date-format="DD/MM/YYYY">
+                            <input type="text" class="form-control" style="display:none" />
+                            <span class="input-group-lg btn btn-lg">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li>
+                    @Ajax.ActionLink(" ", "AddRow", "", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "successAddRow" }, new { @class = "btn glyphicon glyphicon-plus" })
+                </li>
+            </ul>
+        </div>
+    </p>
+    <div id="table">
+
+    </div>
+</div>
+

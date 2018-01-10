@@ -1,0 +1,67 @@
+﻿@model Grv.Web.Models.TaskModels.TasksViewModel
+
+
+<div id="table">
+    <table class="table table-bordered table-responsive " id="ajaxTable">
+        <colgroup>
+            <col span="1" style="width: 5%;" />
+            <col span="1" style="width: 11%;" />
+            <col span="1" style="width: 11%;" />
+            <col span="1" style="width: 15%;" />
+            <col span="1" style="width: 35%;" />
+            <col span="1" style="width: 15%;" />
+        </colgroup>
+        <tr>
+            <th>Row</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Project</th>
+            <th>Summary</th>
+            <th></th>
+        </tr>
+
+        @for (var i = 0; i < Model.Tasks.Count; i++)
+        {
+            <tr>
+                @Html.HiddenFor(x => x.Tasks[i].Id, new { @tskrel = i + 1, @class = "id" })
+                <td>
+                    @Html.Raw(i + 1)
+                </td>
+                <td>
+                    <div class="input-group date time datetimepicker from " tskrel="@Html.Raw(i+1)">
+                        <input type="text" class="form-control " value="@Html.Raw(Model.Tasks[i].From.ToString("t"))" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                    </div>
+                </td>
+                <td>
+                    <div class="input-group date time datetimepicker to" tskrel="@Html.Raw(i+1)">
+                        <input type="text" class="form-control" value="@Html.Raw(Model.Tasks[i].To.ToString("t"))" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </span>
+                    </div>
+                </td>
+                <td>
+                    <select class="companies" tskrel="@Html.Raw(i+1)" tskval="@Model.Tasks[i].ProjectId">
+                        @foreach (var item in Model.Projects)
+                        {
+                            <option @if (Model.Tasks[i].ProjectId == item.Id) { <text> selected </text>          } value="@item.Id">@item.Name</option>
+                        }
+
+                    </select>
+                </td>
+                <td>
+                    @Html.TextBox("Summary_" + i, Model.Tasks[i].Summary, new { @tskrel = i + 1, @class = "summary form-control", @pattern = ".{10,}", required = "required", @required_title = "Minimum length - 10 chars" })
+                </td>
+                <td>
+                    <div class="tasks-actions" >
+                        <button tskrel="@Html.Raw(i+1)" class="btn btn-default save" data-loading-text="Saving..." data-toggle="popover" >Save</button>
+                        <button tskrel="@Html.Raw(i+1)" class="btn btn-default delete" data-loading-text="Deleting..." data-toggle="popover" >Delete</button>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

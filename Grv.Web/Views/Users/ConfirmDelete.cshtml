@@ -1,0 +1,26 @@
+﻿@model Grv.Web.Models.Shared.ConfirmDeleteViewModel
+@{
+    ViewBag.Title = "ConfirmDelete";
+    Layout = "~/Views/Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h2>
+        <button type="button" class="btn btn-default btn-lg" onclick="history.go(-1);return true;">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+        </button>Are you sure you want to delete <b>@Model.Name</b>?
+    </h2>
+</div>
+
+@using (Html.BeginForm(new { @class = "form-horizontal", @role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(m => m.Id)
+    <p>
+        <input type="submit" class="btn btn-primary" value="Delete" />
+
+        <a class="btn btn-default" href="@Url.Action("Index", "Projects")">Cancel</a>
+    </p>
+}

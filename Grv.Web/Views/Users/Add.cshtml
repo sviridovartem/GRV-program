@@ -1,0 +1,81 @@
+﻿@model Grv.Web.Models.UserModels.CreateUserViewModel
+
+@{
+    ViewBag.Title = "Add User";
+    Layout = "~/Views/Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h2>
+        <button type="button" class="btn btn-default btn-lg" onclick="history.go(-1);return true;">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+        </button>Add user
+    </h2>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(m => m.CompanyId)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", required = "required" })
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, new { @class = "control-label" })
+
+        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", required = "required" })
+        @Html.ValidationMessageFor(model => model.Password)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FirstName, new { @class = "control-label" })
+
+        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.FirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.LastName, new { @class = "control-label" })
+
+        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.LastName)
+    </div>
+
+    <div class="form-group">
+        <table class="form-control-dropdown">
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Status, new { @class = "control-label" })
+                </td>
+                <td>
+                    @Html.DropDownListFor(model => model.Status, Model.StatusList, new { @id = "statuses" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Role, new { @class = "control-label" })
+                </td>
+                <td>
+                    @Html.DropDownListFor(model => model.Role, Model.RoleList, new { @id = "roles" })
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <p>
+        <input type="submit" class="btn btn-primary" value="Create" />
+    </p>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#statuses').multiselect({ checkboxName: "statuses" });
+        $('#roles').multiselect({ checkboxName: "roles" });
+    });
+</script>

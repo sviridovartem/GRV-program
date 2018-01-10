@@ -1,0 +1,68 @@
+﻿@model Grv.Web.Models.ProjectViewModels.EditProjectViewModel
+@{
+    ViewBag.Title = "Edit Project";
+    Layout = "~/Views/Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h2>
+        <button type="button" class="btn btn-default btn-lg" onclick="history.go(-1);return true;">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+        </button>Update project - <b>@Model.Name</b>
+    </h2>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", required = "required" })
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+
+    <div class="form-group">
+        <table class="form-control-dropdown">
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.ProjectType, new { @class = "control-label" })
+                </td>
+                <td>
+                    @Html.DropDownListFor(model => model.ProjectType, Model.TypeList, new { @class = "multiselect" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="control-label">
+                        Users
+                    </label>
+                </td>
+                <td>
+                    <select id="UsersIds" style="width: 50px;" name="UsersIds" multiple="multiple">
+                        @foreach (var item in Model.UsersList.ToList())
+                        {
+                            <option @if (item.Selected) { <text> selected</text> } value="@item.Value">@item.Text</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <p>
+        <input type="submit" class="btn btn-primary" value="Apply changes" />
+    </p>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.multiselect').multiselect();
+        $('#UsersIds').multiselect({
+            enableFiltering: true,
+        });
+    });
+</script>

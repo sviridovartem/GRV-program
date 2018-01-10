@@ -1,0 +1,41 @@
+﻿@model Grv.Web.Models.CompanyModels.CompanyUsersViewModel
+@{
+    ViewBag.Title = "All";
+    Layout = "~/Views/Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h2>
+        <button type="button" class="btn btn-default btn-lg" onclick="history.go(-1);return true;">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+        </button>Company - <b>@Model.CompanyName</b> - Admins
+    </h2>
+</div>
+<div>
+    <p>
+        <a class="btn btn-default" href="@Url.Action("CreateAdmin", "Companies", new {@id=Model.CompanyId})">Add new admin</a>
+    </p>
+
+    <table class="table table-bordered table-responsive">
+        <thead>
+            <tr>
+                <th>Administrator</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.UsersList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("UpdateAdmin", "Companies", new {id=item.Id})" class="btn btn-default">Update</a>
+                        <a href="@Url.Action("ConfirmDeleteAdmin", "Companies", new {id=item.Id})" class="btn btn-default">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

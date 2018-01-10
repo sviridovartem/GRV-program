@@ -1,0 +1,43 @@
+﻿@model Grv.Web.Models.ProjectViewModels.CreateProjectViewModel
+@{
+    ViewBag.Title = "Add Project";
+    Layout = "~/Views/Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h2>
+        <button type="button" class="btn btn-default btn-lg" onclick="history.go(-1);return true;">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+        </button>Add project
+    </h2>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.CompanyName)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", required = "required" })
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ProjectType, new { @class = "control-label" })
+
+        @Html.DropDownListFor(model => model.ProjectType, Model.TypeList, new { @class = "multiselect" })
+    </div>
+
+    <p>
+        <input type="submit" class="btn btn-primary" value="Create" />
+    </p>
+}
+
+<script type="text/javascript">
+    $(function () {
+        $('.multiselect').multiselect();
+    });
+</script>

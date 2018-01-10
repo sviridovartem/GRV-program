@@ -1,0 +1,33 @@
+﻿@model Grv.Web.Models.AccountModels.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="@Url.Content("~/Resources/css/bootstrap.css")">
+<link rel="stylesheet" href="@Url.Content("~/Resources/css/sign-in.css")">
+
+<section>
+    <div class="container">
+
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new {@class="form-signin"}))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email address", @required="required", @type="email" })
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", @required="required" })
+            
+            <div>
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <label class="checkbox">
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </label>
+            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Log in" />
+       
+        }
+    </div>
+</section>
