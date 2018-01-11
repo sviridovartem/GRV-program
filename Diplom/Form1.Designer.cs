@@ -34,7 +34,6 @@ namespace Diplom
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Analiser));
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tb_console = new System.Windows.Forms.TextBox();
             this.bt_Save = new System.Windows.Forms.Button();
@@ -87,17 +86,9 @@ namespace Diplom
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1267, 638);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "че-то";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.Azure;
             this.tabPage2.Controls.Add(this.tb_console);
             this.tabPage2.Controls.Add(this.bt_Save);
             this.tabPage2.Controls.Add(this.Description6);
@@ -106,28 +97,27 @@ namespace Diplom
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1267, 638);
+            this.tabPage2.Size = new System.Drawing.Size(1099, 539);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Результаты анализа:";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tb_console
             // 
-            this.tb_console.Location = new System.Drawing.Point(9, 56);
+            this.tb_console.Location = new System.Drawing.Point(9, 50);
             this.tb_console.Multiline = true;
             this.tb_console.Name = "tb_console";
             this.tb_console.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tb_console.Size = new System.Drawing.Size(942, 359);
+            this.tb_console.Size = new System.Drawing.Size(793, 469);
             this.tb_console.TabIndex = 5;
             // 
             // bt_Save
             // 
-            this.bt_Save.BackColor = System.Drawing.Color.Orange;
+            this.bt_Save.BackColor = System.Drawing.Color.Chartreuse;
             this.bt_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bt_Save.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bt_Save.Location = new System.Drawing.Point(999, 372);
+            this.bt_Save.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.bt_Save.Location = new System.Drawing.Point(888, 72);
             this.bt_Save.Name = "bt_Save";
-            this.bt_Save.Size = new System.Drawing.Size(63, 40);
+            this.bt_Save.Size = new System.Drawing.Size(120, 40);
             this.bt_Save.TabIndex = 8;
             this.bt_Save.Text = "Save";
             this.bt_Save.UseVisualStyleBackColor = false;
@@ -138,21 +128,23 @@ namespace Diplom
             this.Description6.AutoSize = true;
             this.Description6.Cursor = System.Windows.Forms.Cursors.Help;
             this.Description6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Description6.Location = new System.Drawing.Point(6, 445);
+            this.Description6.Location = new System.Drawing.Point(876, 256);
+            this.Description6.Margin = new System.Windows.Forms.Padding(3);
             this.Description6.Name = "Description6";
-            this.Description6.Size = new System.Drawing.Size(585, 16);
+            this.Description6.Size = new System.Drawing.Size(217, 64);
             this.Description6.TabIndex = 13;
-            this.Description6.Text = "Шаг 5: Для очистки поля результатов нажмите \" Erase \", для сохранения нажмите \" S" +
-    "ave \"";
+            this.Description6.Text = "Шаг 5:\r\n Для очистки поля результатов \r\nнажмите\" Erase \",\r\n для сохранения нажмит" +
+    "е \" Save \"";
+            this.Description6.UseCompatibleTextRendering = true;
             // 
             // bt_Erase
             // 
-            this.bt_Erase.BackColor = System.Drawing.Color.Orange;
+            this.bt_Erase.BackColor = System.Drawing.Color.Aquamarine;
             this.bt_Erase.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bt_Erase.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bt_Erase.Location = new System.Drawing.Point(999, 56);
+            this.bt_Erase.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.bt_Erase.Location = new System.Drawing.Point(888, 411);
             this.bt_Erase.Name = "bt_Erase";
-            this.bt_Erase.Size = new System.Drawing.Size(63, 32);
+            this.bt_Erase.Size = new System.Drawing.Size(120, 40);
             this.bt_Erase.TabIndex = 7;
             this.bt_Erase.Text = "Erase";
             this.bt_Erase.UseVisualStyleBackColor = false;
@@ -163,7 +155,7 @@ namespace Diplom
             this.Descripton5.AutoSize = true;
             this.Descripton5.Cursor = System.Windows.Forms.Cursors.Help;
             this.Descripton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Descripton5.Location = new System.Drawing.Point(9, 20);
+            this.Descripton5.Location = new System.Drawing.Point(6, 19);
             this.Descripton5.Name = "Descripton5";
             this.Descripton5.Size = new System.Drawing.Size(149, 16);
             this.Descripton5.TabIndex = 12;
@@ -199,7 +191,7 @@ namespace Diplom
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1267, 638);
+            this.tabPage1.Size = new System.Drawing.Size(1099, 539);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Ввод данных:";
             // 
@@ -465,12 +457,11 @@ namespace Diplom
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(2, 1);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1275, 664);
+            this.tabControl1.Size = new System.Drawing.Size(1107, 565);
             this.tabControl1.TabIndex = 14;
             // 
             // Analiser
@@ -479,7 +470,7 @@ namespace Diplom
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1354, 662);
+            this.ClientSize = new System.Drawing.Size(1112, 566);
             this.Controls.Add(this.tabControl1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -512,9 +503,9 @@ namespace Diplom
 
         }
 
-        #endregion
 
-        private TabPage tabPage3;
+
+        #endregion
         private TabPage tabPage2;
         private TextBox tb_console;
         private Button bt_Save;
@@ -547,9 +538,6 @@ namespace Diplom
         private Label Description2;
         private Button bt_Start;
         private TabControl tabControl1;
-
-
-
     }
 }
 
